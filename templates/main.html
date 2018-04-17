@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title>Detector</title>{% endblock %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'detector/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'detector/css/metisMenu.min.css' %}">
+    <link rel="stylesheet" href="{% static 'detector/css/sb-admin-2.css' %}">
+    <link rel="stylesheet" href="{% static 'detector/css/morris.css' %}">
+    <link rel="stylesheet" href="{% static 'detector/css/font-awesome.min.css' %}">
+
+</head>
+
+<body>
+  {% block sidebar %}<!-- insert default navigation text for every page -->{% endblock %}
+  {% block content %}<!-- default content text (typically empty) -->{% endblock %}
+<script src="{% static 'detector/js/jquery.min.js' %}"></script>
+<script src="{% static 'detector/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'detector/js/metisMenu.min.js' %}"></script>
+<script src="{% static 'detector/js/raphael.min.js' %}"></script>
+<script src="{% static 'detector/js/morris.min.js' %}"></script>
+<script src="{% static 'detector/js/morris-data.js' %}"></script>
+<script src="{% static 'detector/js/sb-admin-2.js' %}"></script>
+</body>
+</html>

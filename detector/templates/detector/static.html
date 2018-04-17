@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% block title %}<title>Detector</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'detector/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'detector/css/metisMenu.min.css' %}">
+    <link rel="stylesheet" href="{% static 'detector/css/sb-admin-2.css' %}">
+    <link rel="stylesheet" href="{% static 'detector/css/morris.css' %}">
+    <link rel="stylesheet" href="{% static 'detector/css/font-awesome.min.css' %}">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+{% block content %}
+
+<canvas id="myChart" width="500" height="300"></canvas>
+<canvas id="seven" width="500" height="300"></canvas>
+<script src="{% static 'detector/js/jquery.min.js' %}"></script>
+<script src="{% static 'detector/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'detector/js/metisMenu.min.js' %}"></script>
+<script src="{% static 'detector/js/raphael.min.js' %}"></script>
+<script src="{% static 'detector/js/morris.min.js' %}"></script>
+<script src="{% static 'detector/js/morris-data.js' %}"></script>
+<script src="{% static 'detector/js/sb-admin-2.js' %}"></script>
+<script>
+    Morris.Area({
+        element: 'area-example',
+        data: [
+            {y: '2006', a: 200,},
+            {y: '2007', a: 75},
+            {y: '2008', a: 50,},
+            {y: '2009', a: 75},
+            {y: '2010', a: 50},
+            {y: '2011', a: 75},
+            {y: '2012', a: 100}
+        ],
+        xkey: 'y',
+        ykeys: ['a'],
+        labels: ['Пешеход']
+    });
+</script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            var data = {
+                labels: {{30_day_day}},
+                datasets: [
+                    {
+                        label: "Site Registrations in the Last 30 Days",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: {{30_day_registrations }}
+        }]
+        }
+            ;
+            var ctx = document.getElementById("myChart").getContext("2d");
+            var myLineChart = new Chart(ctx).Line(data);
+            var data = {
+                labels: {{7_day}},
+                datasets: [
+                    {
+                        label: "Site Registrations in the Last 30 Days",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: {{7_day_count}}
+        }]
+        }
+            ;
+            var ctx = document.getElementById("seven").getContext("2d");
+            var myLineChart = new Chart(ctx).Line(data);
+        });
+    </script>
+{% endblock %}
+</body>
+</html>

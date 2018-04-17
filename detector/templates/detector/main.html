@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}<title>Local Library</title>{% endblock %}
+</head>
+
+<body>
+
+{% block sidebar %}<!-- insert default navigation text for every page -->
+{% if user.is_authenticated %}
+<ul>
+    <li>User: {{ user.get_username }}</li>
+    <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+    {% else %}
+    <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+    {% endif %}
+</ul>
+{% endblock %}
+{% block content %}<!-- default content text (typically empty) --> {% endblock %}
+</body>
+</html>
