@@ -690,8 +690,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         day(getDateItems(23),{{day_count}},'За 24 часа',"myChart","#dddddd");
-        day(getDateItems(23),{{day_up_count}},'За 24 часа',"myChart-up","#ffdddd");
-        day(getDateItems(23),{{day_down_count}},'За 24 часа',"myChart-down","#ffffdd");
+        day(getDateItems(23),{{day_up_count}},'Вышли - За 24 часа',"myChart-up","#ffdddd");
+        day(getDateItems(23),{{day_down_count}},'Вошли - За 24 часа',"myChart-down","#ffffdd");
     });
     $('.all').click(function () {
         $('.panel-body').hide();
@@ -705,8 +705,8 @@
     $('.last-day-down').click(function () {
         $('.panel-body').show();
         $('.all-list').hide();
-          day(getDateItems(24),{{day_down_count}},'За 24 часа',"myChart-down","#ffffdd");
-          day(getDateItems(24),{{day_up_count}},'За 24 часа',"myChart-up","#ffdddd");
+          day(getDateItems(24),{{day_down_count}},'Вошли - За 24 часа',"myChart-down","#ffffdd");
+          day(getDateItems(24),{{day_up_count}},'Вышли - За 24 часа',"myChart-up","#ffdddd");
     });
     $('.last-7').click(function () {
         $('.panel-body').show();
@@ -730,8 +730,8 @@
         for (d; d <= now; d.setDate(d.getDate() + 1)) {
             daysOfYear.push((d.getDate()) + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),);
         }
-        day(daysOfYear,{{7_day_count_down}},'Последние 7 дней',"myChart-down","#ffffdd");
-        day(daysOfYear,{{7_day_count_up}},'Последние 7 дней',"myChart-up","#ffdddd");
+        day(daysOfYear,{{7_day_count_down}},'Вошли - Последние 7 дней',"myChart-down","#ffffdd");
+        day(daysOfYear,{{7_day_count_up}},'Вышли - Последние 7 дней',"myChart-up","#ffdddd");
     });
     $('.last-30').click(function () {
         $('.panel-body').show();
@@ -755,8 +755,8 @@
         for (d; d <= now; d.setDate(d.getDate() + 1)) {
             daysOfYear.push((d.getDate()) + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),);
         }
-        day(daysOfYear,{{30_day_count_down}},'Последние 30 дней',"myChart-down","#ffffdd");
-        day(daysOfYear,{{30_day_count_up}},'Последние 7 дней',"myChart-up","#ffdddd");
+        day(daysOfYear,{{30_day_count_down}},'Вошли - Последние 30 дней',"myChart-down","#ffffdd");
+        day(daysOfYear,{{30_day_count_up}},'Вышли - Последние 7 дней',"myChart-up","#ffdddd");
     });
 
     function getDateItems(hours) {
