@@ -22,7 +22,6 @@
 {% endblock %}
 {% block content %}
 <div id="wrapper">
-    <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -33,293 +32,645 @@
             </button>
             <a class="navbar-brand" href="#">@{{ user.get_username }}</a>
         </div>
-        <!-- /.navbar-header -->
-
         <ul class="nav navbar-top-links navbar-right">
-
-            <!-- /.dropdown -->
-
-            <!-- /.dropdown -->
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <!--<li>-->
-                    <!--<a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                    <!--<a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>-->
-                    <!--</li>-->
                     <li class="divider"></li>
                     <a href="{% url 'logout'%}?next={{request.path}}">Logout</a>
                     </li>
                 </ul>
-                <!-- /.dropdown-user -->
             </li>
-            <!-- /.dropdown -->
         </ul>
-        <!-- /.navbar-top-links -->
-
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
-
                     <li>
-                        <a href="#"><i class="fa fa-dashboard fa-fw"></i> Статистика</a>
+                        <a href="#"><i class="fa fa-dashboard fa-fw"></i> Статистика|Все</a>
+                        <ul>
+
+                        </ul>
                     </li>
-
-
                 </ul>
             </div>
-            <!-- /.sidebar-collapse -->
         </div>
-        <!-- /.navbar-static-side -->
     </nav>
 
     <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Detector</h1>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-lg-3 col-md-6 last-day">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa 	fa fa-file-video-o fa-3x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">{{person_recently_count}}</div>
-                                <div>За 24 часа</div>
-                            </div>
-                        </div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="pill" href="#all">Все</a></li>
+            <li><a data-toggle="tab" href="#down">Вошли</a></li>
+            <li><a data-toggle="tab" href="#up">Вышли</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="all" class="tab-pane fade in active">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Detector</h1>
                     </div>
-
+                    <!-- /.col-lg-12 -->
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 last-7">
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa 	fa fa-file-video-o fa-3x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">{{person_7_count}}</div>
-                                <div>Последние 7 дней</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 last-30">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa 	fa fa-file-video-o fa-3x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">{{person_30_count}}</div>
-
-                            </div>
-                            <div>Последние 30 дней</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6">
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa 	fa fa-file-video-o fa-3x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">{{all}}</div>
-                            </div>
-                            <div>Последние 365 дней</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 all">
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa 	fa fa-file-video-o fa-3x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">
-                                    {{all}}
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 last-day">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">{{personAllRecentlyCount}}</div>
+                                        <div>За 24 часа</div>
+                                    </div>
                                 </div>
-                                <div>Всего</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 last-7">
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">{{personAllSevenCount}}</div>
+                                        <div>Последние 7 дней</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 last-30">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">{{personAll30Count}}</div>
+
+                                    </div>
+                                    <div>Последние 30 дней</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">{{personAllYearCount}}</div>
+                                    </div>
+                                    <div>Последние 365 дней</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 all">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">
+                                            {{personAllCount}}
+                                        </div>
+                                        <div>Всего</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Статистика
+                                <div class="pull-right">
+                                    <div class="btn-group">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <canvas id="myChart" width="300" height="100"></canvas>
+                            </div>
+                            <div class="all-list" style="display: none">
+                                <table class="table table-condensed">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name in current time</th>
+                                        <th>Date</th>
+                                    <tbody>
+                                    {% for person in persons %}
+                                    <tr>
+                                        <td>{{ person.id }}</td>
+                                        <td>{{ person.name }}</td>
+                                        <td>{{ person.pub_date }}</td>
+                                    </tr>
+
+                                    {% endfor %}
+                                    </tbody>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- /.panel -->
+                        <!--<div class="panel panel-default">-->
+                        <!--<div class="panel-heading">-->
+                        <!--<i class="fa fa-bar-chart-o fa-fw"></i> Статистика-->
+                        <!--<div class="pull-right">-->
+                        <!--<div class="btn-group">-->
+                        <!--<button type="button" class="btn btn-default btn-xs dropdown-toggle"-->
+                        <!--data-toggle="dropdown">-->
+                        <!--Actions-->
+                        <!--<span class="caret"></span>-->
+                        <!--</button>-->
+                        <!--<ul class="dropdown-menu pull-right" role="menu">-->
+                        <!--<li><a href="#">Action</a>-->
+                        <!--</li>-->
+                        <!--<li><a href="#">Another action</a>-->
+                        <!--</li>-->
+                        <!--<li><a href="#">Something else here</a>-->
+                        <!--</li>-->
+                        <!--<li class="divider"></li>-->
+                        <!--<li><a href="#">Separated link</a>-->
+                        <!--</li>-->
+                        <!--</ul>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /.panel-heading &ndash;&gt;-->
+                        <!--<div class="panel-body">-->
+                        <!--<div class="row">-->
+                        <!--<div class="col-lg-4">-->
+                        <!--<div class="table-responsive">-->
+                        <!--<table class="table table-bordered table-hover table-striped">-->
+                        <!--<thead>-->
+                        <!--<tr>-->
+                        <!--<th>#</th>-->
+                        <!--<th>Date</th>-->
+                        <!--<th>Time</th>-->
+                        <!--<th>Amount</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr>-->
+                        <!--<td>3326</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>3:29 PM</td>-->
+                        <!--<td>$321.33</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td>3325</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>3:20 PM</td>-->
+                        <!--<td>$234.34</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td>3324</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>3:03 PM</td>-->
+                        <!--<td>$724.17</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td>3323</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>3:00 PM</td>-->
+                        <!--<td>$23.71</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td>3322</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>2:49 PM</td>-->
+                        <!--<td>$8345.23</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td>3321</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>2:23 PM</td>-->
+                        <!--<td>$245.12</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td>3320</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>2:15 PM</td>-->
+                        <!--<td>$5663.54</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td>3319</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>2:13 PM</td>-->
+                        <!--<td>$943.45</td>-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
+                        <!--</table>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /.table-responsive &ndash;&gt;-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /.col-lg-4 (nested) &ndash;&gt;-->
+                        <!--<div class="col-lg-8">-->
+                        <!--<div id="morris-bar-chart"></div>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /.col-lg-8 (nested) &ndash;&gt;-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /.row &ndash;&gt;-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /.panel-body &ndash;&gt;-->
+                        <!--</div>-->
+                        <!-- /.panel -->
+
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-8 -->
+
+                    <!-- /.col-lg-4 -->
+                </div>
+            </div>
+            <div id="up" class="tab-pane fade in">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Detector</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 last-day-up">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">{{personUpRecentlyCount}}</div>
+                                        <div>За 24 часа</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 last-7-up">
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">{{personUpSevenCount}}</div>
+                                        <div>Последние 7 дней</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 last-30-up">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">{{personUp30Count}}</div>
+
+                                    </div>
+                                    <div>Последние 30 дней</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">{{personUpYearCount}}</div>
+                                    </div>
+                                    <div>Последние 365 дней</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 all-up">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">
+                                            {{personUpCount}}
+                                        </div>
+                                        <div>Всего</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Статистика
+                                <div class="pull-right">
+                                    <div class="btn-group">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <canvas id="myChart-up" width="300" height="100"></canvas>
+                            </div>
+                            <div class="all-list" style="display: none">
+                                <table class="table table-condensed">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name in current time</th>
+                                        <th>Date</th>
+                                    <tbody>
+                                    {% for person in persons %}
+                                    <tr>
+                                        <td>{{ person.id }}</td>
+                                        <td>{{ person.name }}</td>
+                                        <td>{{ person.pub_date }}</td>
+                                    </tr>
+
+                                    {% endfor %}
+                                    </tbody>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- /.panel -->
+                        <!--<div class="panel panel-default">-->
+                        <!--<div class="panel-heading">-->
+                        <!--<i class="fa fa-bar-chart-o fa-fw"></i> Статистика-->
+                        <!--<div class="pull-right">-->
+                        <!--<div class="btn-group">-->
+                        <!--<button type="button" class="btn btn-default btn-xs dropdown-toggle"-->
+                        <!--data-toggle="dropdown">-->
+                        <!--Actions-->
+                        <!--<span class="caret"></span>-->
+                        <!--</button>-->
+                        <!--<ul class="dropdown-menu pull-right" role="menu">-->
+                        <!--<li><a href="#">Action</a>-->
+                        <!--</li>-->
+                        <!--<li><a href="#">Another action</a>-->
+                        <!--</li>-->
+                        <!--<li><a href="#">Something else here</a>-->
+                        <!--</li>-->
+                        <!--<li class="divider"></li>-->
+                        <!--<li><a href="#">Separated link</a>-->
+                        <!--</li>-->
+                        <!--</ul>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /.panel-heading &ndash;&gt;-->
+                        <!--<div class="panel-body">-->
+                        <!--<div class="row">-->
+                        <!--<div class="col-lg-4">-->
+                        <!--<div class="table-responsive">-->
+                        <!--<table class="table table-bordered table-hover table-striped">-->
+                        <!--<thead>-->
+                        <!--<tr>-->
+                        <!--<th>#</th>-->
+                        <!--<th>Date</th>-->
+                        <!--<th>Time</th>-->
+                        <!--<th>Amount</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr>-->
+                        <!--<td>3326</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>3:29 PM</td>-->
+                        <!--<td>$321.33</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td>3325</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>3:20 PM</td>-->
+                        <!--<td>$234.34</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td>3324</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>3:03 PM</td>-->
+                        <!--<td>$724.17</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td>3323</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>3:00 PM</td>-->
+                        <!--<td>$23.71</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td>3322</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>2:49 PM</td>-->
+                        <!--<td>$8345.23</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td>3321</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>2:23 PM</td>-->
+                        <!--<td>$245.12</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td>3320</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>2:15 PM</td>-->
+                        <!--<td>$5663.54</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--<td>3319</td>-->
+                        <!--<td>10/21/2013</td>-->
+                        <!--<td>2:13 PM</td>-->
+                        <!--<td>$943.45</td>-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
+                        <!--</table>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /.table-responsive &ndash;&gt;-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /.col-lg-4 (nested) &ndash;&gt;-->
+                        <!--<div class="col-lg-8">-->
+                        <!--<div id="morris-bar-chart"></div>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /.col-lg-8 (nested) &ndash;&gt;-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /.row &ndash;&gt;-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; /.panel-body &ndash;&gt;-->
+                        <!--</div>-->
+                        <!-- /.panel -->
+
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-8 -->
+
+                    <!-- /.col-lg-4 -->
+                </div>
+            </div>
+            <div id="down" class="tab-pane fade in">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Detector</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 last-day-down">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">{{personDownRecentlyCount}}</div>
+                                        <div>За 24 часа</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 last-7-down">
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">{{personDownSevenCount}}</div>
+                                        <div>Последние 7 дней</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 last-30-down">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">{{personDown30Count}}</div>
+
+                                    </div>
+                                    <div>Последние 30 дней</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">{{personDownYearCount}}</div>
+                                    </div>
+                                    <div>Последние 365 дней</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 all-down">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa 	fa fa-file-video-o fa-3x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">
+                                            {{personDownCount}}
+                                        </div>
+                                        <div>Всего</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Статистика
+                                <div class="pull-right">
+                                    <div class="btn-group">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <canvas id="myChart-down" width="300" height="100"></canvas>
+                            </div>
+                            <div class="all-list" style="display: none">
+                                <table class="table table-condensed">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name in current time</th>
+                                        <th>Date</th>
+                                    <tbody>
+                                    {% for person in persons %}
+                                    <tr>
+                                        <td>{{ person.id }}</td>
+                                        <td>{{ person.name }}</td>
+                                        <td>{{ person.pub_date }}</td>
+                                    </tr>
+
+                                    {% endfor %}
+                                    </tbody>
+                                    </tr>
+                                    </thead>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-bar-chart-o fa-fw"></i> Статистика
-                        <div class="pull-right">
-                            <div class="btn-group">
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <canvas id="myChart" width="300" height="100"></canvas>
-                    </div>
-                    <div class="all-list" style="display: none">
-                     <table class="table table-condensed">
-                         <thead>
-                         <tr>
-                             <th>#</th>
-                             <th>Name in current time</th>
-                             <th>Date</th>
-                        <tbody>
-                        {% for person in persons %}
-                         <tr>
-                             <td>{{ person.id }}</td>
-                             <td>{{ person.name }}</td>
-                             <td>{{ person.pub_date }}</td>
-                         </tr>
-
-                        {% endfor %}
-                         </tbody>
-                          </tr>
-                         </thead>
-                     </table>
-                    </div>
-                </div>
-
-                <!-- /.panel -->
-                <!--<div class="panel panel-default">-->
-                <!--<div class="panel-heading">-->
-                <!--<i class="fa fa-bar-chart-o fa-fw"></i> Статистика-->
-                <!--<div class="pull-right">-->
-                <!--<div class="btn-group">-->
-                <!--<button type="button" class="btn btn-default btn-xs dropdown-toggle"-->
-                <!--data-toggle="dropdown">-->
-                <!--Actions-->
-                <!--<span class="caret"></span>-->
-                <!--</button>-->
-                <!--<ul class="dropdown-menu pull-right" role="menu">-->
-                <!--<li><a href="#">Action</a>-->
-                <!--</li>-->
-                <!--<li><a href="#">Another action</a>-->
-                <!--</li>-->
-                <!--<li><a href="#">Something else here</a>-->
-                <!--</li>-->
-                <!--<li class="divider"></li>-->
-                <!--<li><a href="#">Separated link</a>-->
-                <!--</li>-->
-                <!--</ul>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.panel-heading &ndash;&gt;-->
-                <!--<div class="panel-body">-->
-                <!--<div class="row">-->
-                <!--<div class="col-lg-4">-->
-                <!--<div class="table-responsive">-->
-                <!--<table class="table table-bordered table-hover table-striped">-->
-                <!--<thead>-->
-                <!--<tr>-->
-                <!--<th>#</th>-->
-                <!--<th>Date</th>-->
-                <!--<th>Time</th>-->
-                <!--<th>Amount</th>-->
-                <!--</tr>-->
-                <!--</thead>-->
-                <!--<tbody>-->
-                <!--<tr>-->
-                <!--<td>3326</td>-->
-                <!--<td>10/21/2013</td>-->
-                <!--<td>3:29 PM</td>-->
-                <!--<td>$321.33</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>3325</td>-->
-                <!--<td>10/21/2013</td>-->
-                <!--<td>3:20 PM</td>-->
-                <!--<td>$234.34</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>3324</td>-->
-                <!--<td>10/21/2013</td>-->
-                <!--<td>3:03 PM</td>-->
-                <!--<td>$724.17</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>3323</td>-->
-                <!--<td>10/21/2013</td>-->
-                <!--<td>3:00 PM</td>-->
-                <!--<td>$23.71</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>3322</td>-->
-                <!--<td>10/21/2013</td>-->
-                <!--<td>2:49 PM</td>-->
-                <!--<td>$8345.23</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>3321</td>-->
-                <!--<td>10/21/2013</td>-->
-                <!--<td>2:23 PM</td>-->
-                <!--<td>$245.12</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>3320</td>-->
-                <!--<td>10/21/2013</td>-->
-                <!--<td>2:15 PM</td>-->
-                <!--<td>$5663.54</td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                <!--<td>3319</td>-->
-                <!--<td>10/21/2013</td>-->
-                <!--<td>2:13 PM</td>-->
-                <!--<td>$943.45</td>-->
-                <!--</tr>-->
-                <!--</tbody>-->
-                <!--</table>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.table-responsive &ndash;&gt;-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.col-lg-4 (nested) &ndash;&gt;-->
-                <!--<div class="col-lg-8">-->
-                <!--<div id="morris-bar-chart"></div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.col-lg-8 (nested) &ndash;&gt;-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.row &ndash;&gt;-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.panel-body &ndash;&gt;-->
-                <!--</div>-->
-                <!-- /.panel -->
-
-                <!-- /.panel -->
-            </div>
-            <!-- /.col-lg-8 -->
-
-            <!-- /.col-lg-4 -->
-        </div>
-        <!-- /.row -->
     </div>
-    <!-- /#page-wrapper -->
-
 </div>
 <script src="{% static 'detector/js/jquery.min.js' %}"></script>
 <script src="{% static 'detector/js/bootstrap.min.js' %}"></script>
@@ -330,7 +681,9 @@
 <script src="{% static 'detector/js/sb-admin-2.js' %}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        day();
+        day(getDateItems(23),{{day_count}},'За 24 часа',"myChart");
+        day(getDateItems(23),{{day_up_count}},'За 24 часа',"myChart-up");
+        day(getDateItems(23),{{day_down_count}},'За 24 часа',"myChart-down");
     });
     $('.all').click(function () {
         $('.panel-body').hide();
@@ -339,17 +692,89 @@
     $('.last-day').click(function () {
         $('.panel-body').show();
         $('.all-list').hide();
-        day();
+          day(getDateItems(24),{{day_count}},'За 24 часа',"myChart");
+    });
+    $('.last-day-up').click(function () {
+        $('.panel-body').show();
+        $('.all-list').hide();
+          day(getDateItems(24),{{day_up_count}},'За 24 часа',"myChart-up");
+    });
+    $('.last-day-down').click(function () {
+        $('.panel-body').show();
+        $('.all-list').hide();
+          day(getDateItems(24),{{day_down_count}},'За 24 часа',"myChart-down");
     });
     $('.last-7').click(function () {
         $('.panel-body').show();
         $('.all-list').hide();
-        seven();
+        var now = new Date();
+        var daysOfYear = [];
+        var d = new Date();
+        d.setDate(d.getDate() - 6);
+        for (d; d <= now; d.setDate(d.getDate() + 1)) {
+            daysOfYear.push((d.getDate()) + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),);
+        }
+        day(daysOfYear,{{7_day_count}},'Последние 7 дней',"myChart");
+    });
+    $('.last-7-up').click(function () {
+        $('.panel-body').show();
+        $('.all-list').hide();
+        var now = new Date();
+        var daysOfYear = [];
+        var d = new Date();
+        d.setDate(d.getDate() - 6);
+        for (d; d <= now; d.setDate(d.getDate() + 1)) {
+            daysOfYear.push((d.getDate()) + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),);
+        }
+        day(daysOfYear,{{7_day_count_up}},'Последние 7 дней',"myChart-up");
+    });
+    $('.last-7-down').click(function () {
+        $('.panel-body').show();
+        $('.all-list').hide();
+        var now = new Date();
+        var daysOfYear = [];
+        var d = new Date();
+        d.setDate(d.getDate() - 6);
+        for (d; d <= now; d.setDate(d.getDate() + 1)) {
+            daysOfYear.push((d.getDate()) + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),);
+        }
+        day(daysOfYear,{{7_day_count_down}},'Последние 7 дней',"myChart-down");
     });
     $('.last-30').click(function () {
         $('.panel-body').show();
         $('.all-list').hide();
-        last30()
+         var now = new Date();
+        var daysOfYear = [];
+        var d = new Date();
+        d.setDate(d.getDate() - 29);
+        for (d; d <= now; d.setDate(d.getDate() + 1)) {
+            daysOfYear.push((d.getDate()) + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),);
+        }
+        day(daysOfYear,{{30_day_count}},'Последние 30 дней',"myChart");
+    });
+    $('.last-30-up').click(function () {
+        $('.panel-body').show();
+        $('.all-list').hide();
+         var now = new Date();
+        var daysOfYear = [];
+        var d = new Date();
+        d.setDate(d.getDate() - 29);
+        for (d; d <= now; d.setDate(d.getDate() + 1)) {
+            daysOfYear.push((d.getDate()) + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),);
+        }
+        day(daysOfYear,{{30_day_count_up}},'Последние 30 дней',"myChart-up");
+    });
+    $('.last-30-down').click(function () {
+        $('.panel-body').show();
+        $('.all-list').hide();
+         var now = new Date();
+        var daysOfYear = [];
+        var d = new Date();
+        d.setDate(d.getDate() - 29);
+        for (d; d <= now; d.setDate(d.getDate() + 1)) {
+            daysOfYear.push((d.getDate()) + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),);
+        }
+        day(daysOfYear,{{30_day_count_down}},'Последние 30 дней',"myChart-down");
     });
 
     function getDateItems(hours) {
@@ -362,20 +787,19 @@
             // consider using moment.js library to format date
             toDate.setTime(toDate.getTime() - (1 * 60 * 60 * 1000));
         }
-
-        return result;
+        return result.reverse();
     }
 
-    function day() {
-        var datesFrom24Hours = getDateItems(24);
-        var ctx = document.getElementById("myChart").getContext('2d');
+    function day(datesFrom24Hours,Data,title,cls) {
+
+        var ctx = document.getElementById(cls).getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: datesFrom24Hours,
                 datasets: [{
-                    label: 'За 24 часа',
-                    data: {{day_count}},
+                    label: title,
+                    data: Data,
             borderWidth: 1
         }
     ]
@@ -393,72 +817,9 @@
         ;
     };
 
-    function seven() {
-        var now = new Date();
-        var daysOfYear = [];
-        var d = new Date();
-        d.setDate(d.getDate() - 6);
-        for (d; d <= now; d.setDate(d.getDate() + 1)) {
-            daysOfYear.push((d.getDate()) + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),);
-        }
-        ;
-        var ctx = document.getElementById("myChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: daysOfYear,
-                datasets: [{
-                    label: 'Последние 7 дней',
-                    data: {{7_day_count}},
-            borderWidth: 1
-        }
-    ]
-    },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    })
-        ;
-    };
 
-    function last30() {
-        var now = new Date();
-        var daysOfYear = [];
-        var d = new Date();
-        d.setDate(d.getDate() - 29);
-        for (d; d <= now; d.setDate(d.getDate() + 1)) {
-            daysOfYear.push((d.getDate()) + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),);
-        }
-        var ctx = document.getElementById("myChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: daysOfYear,
-                datasets: [{
-                    label: 'Последние 30 дней',
-                    data: {{30_day_count}},
-            borderWidth: 1
-        }
-    ]
-    },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    })
-        ;
-    };
+
+
 
 
 </script>

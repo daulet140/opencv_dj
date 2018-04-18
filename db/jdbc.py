@@ -15,8 +15,8 @@ cursor = conn.cursor()
 #     conn.commit()
 
 
-def insert2Table(person):
+def insert2Table(person, s="up"):
     print(person.getId())
-    insert = "insert into main.detector_person(name,pub_date) values ('{}','{}')".format(person.getId(), datetime.datetime.now())
+    insert = "insert into main.detector_person(name,pub_date) values ('{}','{}')".format(s, datetime.datetime.now())
     cursor.execute(insert)
     conn.commit()
