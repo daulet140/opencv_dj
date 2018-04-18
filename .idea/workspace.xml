@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dc7ed652-f434-48ae-846f-724cd412e755" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/jdbc.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/jdbc.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/detector/templates/detector/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/detector/templates/detector/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detector/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/detector/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/new_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/new_2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,7 +36,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/detector/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3876">
+            <state relative-caret-position="3638">
               <caret line="228" column="81" selection-start-line="228" selection-start-column="81" selection-end-line="228" selection-end-column="81" />
             </state>
           </provider>
@@ -49,8 +45,28 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/detector/templates/detector/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1926">
-              <caret line="697" column="32" lean-forward="true" selection-start-line="697" selection-start-column="32" selection-end-line="697" selection-end-column="32" />
+            <state relative-caret-position="306">
+              <caret line="758" column="27" selection-start-line="758" selection-start-column="27" selection-end-line="758" selection-end-column="27" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#33040#33111#0" />
+                <element signature="e#33151#33292#0" />
+                <element signature="e#33527#33678#0" />
+                <element signature="e#33716#34142#0" />
+                <element signature="e#34658#35094#0" />
+                <element signature="e#35133#35563#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -91,6 +107,8 @@
       <find>person_30_countpersonAll30Count</find>
       <find>last-30-up</find>
       <find>static_7_up_down</find>
+      <find>ca</find>
+      <find>ошл</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -128,6 +146,7 @@
         <option value="$PROJECT_DIR$/db/jdbc.py" />
         <option value="$PROJECT_DIR$/new_2.py" />
         <option value="$PROJECT_DIR$/detector/views.py" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/detector/templates/detector/index.html" />
       </list>
     </option>
@@ -159,24 +178,6 @@
             <path>
               <item name="opencv" type="b2602c69:ProjectViewProjectNode" />
               <item name="opencv" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="opencv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="opencv" type="462c0819:PsiDirectoryNode" />
-              <item name="detector" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="opencv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="opencv" type="462c0819:PsiDirectoryNode" />
-              <item name="detector" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="opencv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="opencv" type="462c0819:PsiDirectoryNode" />
-              <item name="detector" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="detector" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -269,6 +270,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32909605" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
@@ -277,7 +279,7 @@
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32909605" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.38276836" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2872483" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.295302" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" visible="true" weight="0.14966443" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -306,13 +308,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/detector/templates/detector/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2992">
-          <caret line="176" selection-start-line="176" selection-end-line="176" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://f22ccfcb-a4b4-454b-9260-ad9946a1acd8/schema/main/table/detector_person">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -643,15 +638,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/detector/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3876">
+        <state relative-caret-position="3638">
           <caret line="228" column="81" selection-start-line="228" selection-start-column="81" selection-end-line="228" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/detector/templates/detector/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1926">
-          <caret line="697" column="32" lean-forward="true" selection-start-line="697" selection-start-column="32" selection-end-line="697" selection-end-column="32" />
+        <state relative-caret-position="306">
+          <caret line="758" column="27" selection-start-line="758" selection-start-column="27" selection-end-line="758" selection-end-column="27" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#33040#33111#0" />
+            <element signature="e#33151#33292#0" />
+            <element signature="e#33527#33678#0" />
+            <element signature="e#33716#34142#0" />
+            <element signature="e#34658#35094#0" />
+            <element signature="e#35133#35563#0" />
+          </folding>
         </state>
       </provider>
     </entry>

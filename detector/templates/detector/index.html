@@ -60,12 +60,12 @@
 
     <div id="page-wrapper">
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="pill" href="#all">Все</a></li>
-            <li><a data-toggle="tab" href="#down">Вошли</a></li>
-            <li><a data-toggle="tab" href="#up">Вышли</a></li>
+            <li><a data-toggle="pill" href="#all">Все</a></li>
+            <li class="active"><a data-toggle="tab" href="#down">По отдельности</a></li>
+            <!--<li><a data-toggle="tab" href="#up">Вышли</a></li>-->
         </ul>
         <div class="tab-content">
-            <div id="all" class="tab-pane fade in active">
+            <div id="all" class="tab-pane fade in">
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Detector</h1>
@@ -404,7 +404,7 @@
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                <canvas id="myChart-up" width="300" height="100"></canvas>
+
                             </div>
                             <div class="all-list" style="display: none">
                                 <table class="table table-condensed">
@@ -541,7 +541,7 @@
                     <!-- /.col-lg-4 -->
                 </div>
             </div>
-            <div id="down" class="tab-pane fade in">
+            <div id="down" class="tab-pane fade in active">
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Detector</h1>
@@ -642,7 +642,15 @@
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                <canvas id="myChart-down" width="300" height="100"></canvas>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                    <canvas id="myChart-up"  height="200"></canvas>
+                                        </div>
+                                    <div class="col-lg-6">
+                                    <canvas id="myChart-down" height="200"></canvas>
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="all-list" style="display: none">
                                 <table class="table table-condensed">
@@ -681,9 +689,9 @@
 <script src="{% static 'detector/js/sb-admin-2.js' %}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        day(getDateItems(23),{{day_count}},'За 24 часа',"myChart");
-        day(getDateItems(23),{{day_up_count}},'За 24 часа',"myChart-up");
-        day(getDateItems(23),{{day_down_count}},'За 24 часа',"myChart-down");
+        day(getDateItems(23),{{day_count}},'За 24 часа',"myChart","#dddddd");
+        day(getDateItems(23),{{day_up_count}},'За 24 часа',"myChart-up","#ffdddd");
+        day(getDateItems(23),{{day_down_count}},'За 24 часа',"myChart-down","#ffffdd");
     });
     $('.all').click(function () {
         $('.panel-body').hide();
@@ -694,15 +702,11 @@
         $('.all-list').hide();
           day(getDateItems(24),{{day_count}},'За 24 часа',"myChart");
     });
-    $('.last-day-up').click(function () {
-        $('.panel-body').show();
-        $('.all-list').hide();
-          day(getDateItems(24),{{day_up_count}},'За 24 часа',"myChart-up");
-    });
     $('.last-day-down').click(function () {
         $('.panel-body').show();
         $('.all-list').hide();
-          day(getDateItems(24),{{day_down_count}},'За 24 часа',"myChart-down");
+          day(getDateItems(24),{{day_down_count}},'За 24 часа',"myChart-down","#ffffdd");
+          day(getDateItems(24),{{day_up_count}},'За 24 часа',"myChart-up","#ffdddd");
     });
     $('.last-7').click(function () {
         $('.panel-body').show();
@@ -716,18 +720,6 @@
         }
         day(daysOfYear,{{7_day_count}},'Последние 7 дней',"myChart");
     });
-    $('.last-7-up').click(function () {
-        $('.panel-body').show();
-        $('.all-list').hide();
-        var now = new Date();
-        var daysOfYear = [];
-        var d = new Date();
-        d.setDate(d.getDate() - 6);
-        for (d; d <= now; d.setDate(d.getDate() + 1)) {
-            daysOfYear.push((d.getDate()) + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),);
-        }
-        day(daysOfYear,{{7_day_count_up}},'Последние 7 дней',"myChart-up");
-    });
     $('.last-7-down').click(function () {
         $('.panel-body').show();
         $('.all-list').hide();
@@ -738,7 +730,8 @@
         for (d; d <= now; d.setDate(d.getDate() + 1)) {
             daysOfYear.push((d.getDate()) + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),);
         }
-        day(daysOfYear,{{7_day_count_down}},'Последние 7 дней',"myChart-down");
+        day(daysOfYear,{{7_day_count_down}},'Последние 7 дней',"myChart-down","#ffffdd");
+        day(daysOfYear,{{7_day_count_up}},'Последние 7 дней',"myChart-up","#ffdddd");
     });
     $('.last-30').click(function () {
         $('.panel-body').show();
@@ -752,18 +745,6 @@
         }
         day(daysOfYear,{{30_day_count}},'Последние 30 дней',"myChart");
     });
-    $('.last-30-up').click(function () {
-        $('.panel-body').show();
-        $('.all-list').hide();
-         var now = new Date();
-        var daysOfYear = [];
-        var d = new Date();
-        d.setDate(d.getDate() - 29);
-        for (d; d <= now; d.setDate(d.getDate() + 1)) {
-            daysOfYear.push((d.getDate()) + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),);
-        }
-        day(daysOfYear,{{30_day_count_up}},'Последние 30 дней',"myChart-up");
-    });
     $('.last-30-down').click(function () {
         $('.panel-body').show();
         $('.all-list').hide();
@@ -774,7 +755,8 @@
         for (d; d <= now; d.setDate(d.getDate() + 1)) {
             daysOfYear.push((d.getDate()) + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),);
         }
-        day(daysOfYear,{{30_day_count_down}},'Последние 30 дней',"myChart-down");
+        day(daysOfYear,{{30_day_count_down}},'Последние 30 дней',"myChart-down","#ffffdd");
+        day(daysOfYear,{{30_day_count_up}},'Последние 7 дней',"myChart-up","#ffdddd");
     });
 
     function getDateItems(hours) {
@@ -790,7 +772,7 @@
         return result.reverse();
     }
 
-    function day(datesFrom24Hours,Data,title,cls) {
+    function day(datesFrom24Hours,Data,title,cls,color) {
 
         var ctx = document.getElementById(cls).getContext('2d');
         var myChart = new Chart(ctx, {
@@ -800,9 +782,10 @@
                 datasets: [{
                     label: title,
                     data: Data,
-            borderWidth: 1
-        }
-    ]
+                    borderWidth: 1,
+                    backgroundColor:color
+
+                }]
     },
         options: {
             scales: {
